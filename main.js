@@ -48,3 +48,17 @@ let gameState = {};
 		box.setAttributeNode(dataNum);
 	}
 }
+
+// Changing current player
+function changeCurrentPlayer() {
+	currentPlayer === player1
+		? (currentPlayer = player2)
+		: (currentPlayer = player1);
+}
+
+// Main Function to Play
+function play(){
+  createBoxes(row,col,game);
+}
+
+play();
