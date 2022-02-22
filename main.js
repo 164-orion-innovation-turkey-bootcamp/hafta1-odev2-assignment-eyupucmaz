@@ -56,9 +56,35 @@ function changeCurrentPlayer() {
 		: (currentPlayer = player1);
 }
 
+function handleBoxClick() {
+	let boxes = document.querySelectorAll(".box");
+	boxes.forEach((box, index) => {
+		box.addEventListener("click", (e) => {
+			if (gameOver === false) {
+				if (currentPlayer === player1) {
+					if (!gameState[index]) {
+						box.textContent = player1;
+						changeCurrentPlayer();
+						player.textContent = `Current Player: ${currentPlayer}`;
+						console.log(gameState);
+					}
+				} else if (currentPlayer === player2) {
+					if (!gameState[index]) {
+						box.textContent = player2;
+						changeCurrentPlayer();
+						player.textContent = `Current Player: ${currentPlayer}`;
+						console.log(gameState);
+					}
+				}
+			}
+		});
+	});
+}
+
 // Main Function to Play
 function play(){
   createBoxes(row,col,game);
+  handleBoxClick();
 }
 
 play();
