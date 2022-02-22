@@ -38,7 +38,7 @@ let gameState = {};
  * @param  {HTMLElement} parent Parent element of boxes, boxes gonna be inside this element
  * @description creates boxes for tic tac toe game
  */
- function createBoxes(row, col, parent) {
+function createBoxes(row, col, parent) {
 	for (let i = 0; i < row * col; i++) {
 		let box = document.createElement("div");
 		box.classList.add("box");
@@ -56,6 +56,18 @@ function changeCurrentPlayer() {
 		: (currentPlayer = player1);
 }
 
+// Setting box states with data-num attribute
+function setGameState() {
+	// Get all boxes
+	let boxes = document.querySelectorAll(".box");
+	// getting each data-num values and added to gameState obj
+	boxes.forEach((box) => {
+		let att = box.attributes.getNamedItem("data-num").nodeValue;
+		let value = box.textContent;
+		gameState[att] = value;
+	});
+}
+
 function handleBoxClick() {
 	let boxes = document.querySelectorAll(".box");
 	boxes.forEach((box, index) => {
@@ -65,6 +77,7 @@ function handleBoxClick() {
 					if (!gameState[index]) {
 						box.textContent = player1;
 						changeCurrentPlayer();
+						setGameState();
 						player.textContent = `Current Player: ${currentPlayer}`;
 						console.log(gameState);
 					}
@@ -72,6 +85,7 @@ function handleBoxClick() {
 					if (!gameState[index]) {
 						box.textContent = player2;
 						changeCurrentPlayer();
+						setGameState();
 						player.textContent = `Current Player: ${currentPlayer}`;
 						console.log(gameState);
 					}
@@ -82,9 +96,10 @@ function handleBoxClick() {
 }
 
 // Main Function to Play
-function play(){
-  createBoxes(row,col,game);
-  handleBoxClick();
+function play() {
+	player.textContent = `Current Player: ${currentPlayer}`;
+	createBoxes(row, col, game);
+	handleBoxClick();
 }
 
 play();
