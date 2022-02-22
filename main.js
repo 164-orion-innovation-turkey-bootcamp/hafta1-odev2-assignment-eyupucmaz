@@ -31,3 +31,20 @@ let winCombos = [
 ];
 // Initilaze game state object
 let gameState = {};
+
+/**
+ * @param  {Number} row Number of row
+ * @param  {Number} col Number of column
+ * @param  {HTMLElement} parent Parent element of boxes, boxes gonna be inside this element
+ * @description creates boxes for tic tac toe game
+ */
+ function createBoxes(row, col, parent) {
+	for (let i = 0; i < row * col; i++) {
+		let box = document.createElement("div");
+		box.classList.add("box");
+		parent.appendChild(box);
+		let dataNum = document.createAttribute("data-num");
+		dataNum.value = `${i}`;
+		box.setAttributeNode(dataNum);
+	}
+}
