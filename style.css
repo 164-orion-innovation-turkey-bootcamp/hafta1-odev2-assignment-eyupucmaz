@@ -69,3 +69,26 @@ body {
 a {
 	color: #000;
 }
+
+.game {
+	margin-block: 2rem;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	grid-template-columns: repeat(3, auto);
+	gap: 0px;
+}
+
+.box {
+	font-family: "Shizuru", cursive;
+	width: var(--box-width);
+	height: var(--box-height);
+	background-color: var(--box-bg-color);
+	border: var(--box-border-width) solid var(--box-border-color);
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	font-size: 5rem;
+	line-height: 5rem;
+}
