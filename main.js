@@ -108,11 +108,6 @@ function checkWinner() {
 				gameState[combo[1]] === gameState[combo[2]] &&
 				gameState[combo[0]] === gameState[combo[2]]
 			) {
-				console.log(
-					gameState[combo[0]],
-					gameState[combo[1]],
-					gameState[combo[2]]
-				);
 				gameOver = true;
 				winner = gameState[combo[0]];
 				player.textContent = `Player ${winner} is won!`;
@@ -161,7 +156,6 @@ function handleBoxClick() {
 						setGameState();
 						checkWinner();
 						isDraw();
-						console.log(gameState);
 					}
 				} else if (currentPlayer === player2) {
 					if (!gameState[index]) {
@@ -171,7 +165,6 @@ function handleBoxClick() {
 						setGameState();
 						checkWinner();
 						isDraw();
-						console.log(gameState);
 					}
 				}
 			}
